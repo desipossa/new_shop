@@ -1,12 +1,12 @@
 import { Link, useSearchParams } from "react-router-dom";
-
+import error from "../images/top_logo.png";
 const SearchResult = ({ shopData }) => {
     const [search, setSearch] = useSearchParams();
     const r = search.get('q');
 
     //{shopData} 에서 {name}에 r포함된 거를 찾아서 새배열을 만들기... 
 
-    const searchResult = shopData.filter(it => it.name.toUpperCase().includes(r.toUpperCase()));
+    const searchResult = shopData.filter(it => it.name.toUpperCase().includes(r.toUpperCase()) || it.description?.toUpperCase().includes(r.toUpperCase()));
 
     // 설명 부분에 키워드가 포함된 것도 찾아주게...;
 
@@ -26,7 +26,7 @@ const SearchResult = ({ shopData }) => {
                             <li key={it.id} className="itm">
                                 <Link to={`/detail/${it.id}`}>
                                     <figure>
-                                        <img src={it.api_featured_image} alt="" />
+                                        <img src={it.api_featured_image} alt="" onError={e => e.target.src = error} />
                                     </figure>
                                     <strong>
                                         {it.name}
