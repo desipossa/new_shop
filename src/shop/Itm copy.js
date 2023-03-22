@@ -14,8 +14,9 @@ const Itm = ({ shopData, cart, setCart }) => {
         console.log(match)
         let option;
         if (match) {
-            alert('장바구니에 있음...')
-            option = cart.map(it => it.id === match.id ? { ...it, num: it.num + 1 } : it);
+            option = [
+                ...cart
+            ]
         } else {
             option = [
                 ...cart,
