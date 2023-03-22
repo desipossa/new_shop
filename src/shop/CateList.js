@@ -22,7 +22,7 @@ const CateList = ({ shopData }) => {
                                     {it.name}
                                 </strong>
                                 <p>
-                                    {it.description.substr(0, 100)} {it.description.length > 100 ? '...' : ''}
+                                    {it.description?.substr(0, 100)} {it.description?.length > 100 ? '...' : ''}
                                 </p>
                             </Link>
                         </li>
