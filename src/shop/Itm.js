@@ -12,6 +12,7 @@ const Itm = ({ shopData, cart, setCart }) => {
         setCart([
             ...cart,
             {
+                id: Itm.id,
                 name: Itm.name,
                 price: Itm.price,
                 desc: Itm.description,
