@@ -5,7 +5,7 @@ const Itm = ({ shopData, cart, setCart }) => {
     //itm === shopData.id;
     const Itm = shopData.find(it => String(it.id) === itm);
 
-    const GO = useNavigate();
+    const natigate = useNavigate();
 
     const addCart = () => {
         // cart page 로 이동해라...
@@ -30,7 +30,7 @@ const Itm = ({ shopData, cart, setCart }) => {
             ]
         }
         setCart(option)
-        GO('/cart');
+        natigate('/cart');
     }
 
 

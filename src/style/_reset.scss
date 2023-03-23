@@ -30,3 +30,10 @@ body {
 p {
     word-break: keep-all;
 }
+
+// 슬라이드 반짜기는 거
+
+.slick-track,
+.slick-slide {
+    transition-delay: 300ms;
+}
