@@ -1,17 +1,27 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import Slide from 'react-slick';
+import "slick-carousel/slick/slick.css";
 
-const ListAll = ({ shopData, sw }) => {
+const MainSlideList = ({ shopData, sw, cate }) => {
+
+    const list = shopData.filter(it => it.category === cate);
+    const option = {
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        arrows: false,
+        dots: true,
+    }
+
+    const slide = useRef(null);
 
     return (
-        <div className="CateList inner">
-            <div className="CateTitle">
-                <h2>all</h2>
-            </div>
-            <ul className="list _lg">
+        <div className="SlideList inner">
+            <Slide className="list" {...option} ref={slide}>
                 {
-                    shopData.map(it => {
+                    list.map(it => {
                         return (
-                            <li key={it.id} className="itm">
+                            <div key={it.id} className="itm">
                                 <Link to={`/detail/${it.id}`}>
                                     <figure className="imgCase">
                                         <img src={it.api_featured_image} alt="" />
@@ -26,12 +36,15 @@ const ListAll = ({ shopData, sw }) => {
                                         <span>{parseInt(it.price * sw).toLocaleString()}</span> 원
                                     </div>
                                 </Link>
-                            </li>
+                            </div>
                         )
                     })
                 }
-            </ul>
+            </Slide>
+            <button onClick={() => slide.current.slickPrev()} className="arrow prev">뒤로</button>
+            <button onClick={() => slide.current.slickNext()} className="arrow next">앞으로</button>
         </div>
     )
 }
-export default ListAll;
+
+export default MainSlideList;

@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 
-const ListAll = ({ shopData, sw }) => {
+const MainList = ({ shopData, sw, cate }) => {
 
+    const list = shopData.filter(it => it.category === cate);
     return (
         <div className="CateList inner">
             <div className="CateTitle">
-                <h2>all</h2>
+                <h2>{cate}</h2>
             </div>
             <ul className="list _lg">
                 {
-                    shopData.map(it => {
+                    list.map(it => {
                         return (
                             <li key={it.id} className="itm">
                                 <Link to={`/detail/${it.id}`}>
@@ -34,4 +35,5 @@ const ListAll = ({ shopData, sw }) => {
         </div>
     )
 }
-export default ListAll;
+
+export default MainList;
