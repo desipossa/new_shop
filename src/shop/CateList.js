@@ -8,8 +8,8 @@ const CateList = ({ shopData, sw }) => {
     // arry1 + arry2 : arry1.concat(arry2);
     // [...arry1, ...arry2]
 
-    const list = shopData.filter(it => it.category === cate);
-    const [sort, setSort] = useState(list);
+    const list = shopData.filter(it => cate === it.category);
+    const [sort, setSort] = useState([...list]);
 
     const priceUp = () => {
         setSort(list.sort((a, b) => a.price - b.price))
